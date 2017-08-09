@@ -4,6 +4,11 @@
 
 Heavily inspired by the [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript) and forked from [Allar's UE4 style guide](http://ue4.style/).
 
+## Linking To This Document
+
+Every section of this style guide is numbered for both easy reference and easy linking. You can link to any section directly by simply append a hash tag and the section number to the end of http://ue4.style
+For example, if you want to send someone to the first principle of this style guide you would append `#0.1`, resulting in http://ue4.style#0.1.
+
 ## Important Terminology
 
 <a name="terms-level-map"></a>
@@ -80,6 +85,16 @@ If you are helping someone who's work conforms to a different but consistent and
 ### 0.4 A team without a style guide is no team of mine.
 
 When joining an Unreal Engine 4 team one of your first questions should be "Do you have a style guide?". If the answer is no, you should be skeptical about their ability to work as a team.
+
+<a name="0.5"></a>
+### 0.5 Don't Break The Law
+
+Gamemakin LLC is not a lawyer, but please don't introduce illegal actions and behavior to a project, including but not limited to:
+
+* Don't distribute content you don't have the rights to distribute
+* Don't infringe on someone else's copyrighted or trademark material
+* Don't steal content
+* Follow licensing restrictions on content, e.g. attribute when attributions are needed
 
 <a name="toc"></a>
 ## Table of Contents
@@ -235,6 +250,7 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | Blueprint Macro Library | BPML_      |            | Do not use macro libraries if possible. |
 | Enumeration             | E          |            | No underscore.                   |
 | Structure               | F or S     |            | No underscore.                   |
+| Tutorial Blueprint      | TBP_       |            |                                  |
 | Widget Blueprint        | WBP_       |            |                                  |
 
 <a name="anc-materials"></a>
@@ -262,9 +278,8 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | Texture (Metallic)      | T_         | _MT        |                                  |
 | Texture (Normal)        | T_         | _N         |                                  |
 | Texture (Roughness)     | T_         | _R         |                                  |
-| Texture (Opacity)       | T_         | _O         |                                  |
-| Texture (Opacity Mask)  | T_         | _OM        |                                  |
-| Texture (Ambient Occlusion) | T_     | _AO        |                                  |
+| Texture (Alpha/Opacity) | T_         | _A         |                                  |
+| Texture (Ambient Occlusion) | T_     | _AO         |                                  |
 | Texture (Bump)          | T_         | _B         |                                  |
 | Texture (Emissive)      | T_         | _E         |                                  |
 | Texture (Mask)          | T_         | _M         |                                  |
@@ -612,6 +627,22 @@ The `MaterialLibrary` doesn't have to consist of purely materials. Shared utilit
 
 Any testing or debug materials should be within `MaterialLibrary/Debug`. This allows debug materials to be easily stripped from a project before shipping and makes it incredibly apparent if production assets are using them if reference errors are shown.
 
+<a name="2.9"></a>
+<a name="structure-no-empty-folders"></a>
+### 2.9 No Empty Folders ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+There simply shouldn't be any empty folders. They clutter the content browser.
+
+If you find that the content browser has an empty folder you can't delete, you should perform the following:
+1. Be sure you're using source control.
+1. Immediately run Fix Up Redirectors on your project.
+1. Navigate to the folder on-disk and delete the assets inside.
+1. Close the editor.
+1. Make sure your source control state is in sync (i.e. if using Perforce, run a Reconcile Offline Work on your content directory)
+1. Open the editor. Confirm everything still works as expected. If it doesn't, revert, figure out what went wrong, and try again.
+1. Ensure the folder is now gone.
+1. Submit changes to source control.
+
 <a name="3"></a>
 <a name="bp"></a>
 ## 3. Blueprints ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
@@ -660,9 +691,7 @@ The words `variable` and `property` may be used interchangably.
 
 > 3.2.6 [Transient](#bp-vars-transient)
 
-> 3.2.7 [SaveGame](#bp-vars-savegame)
-
-> 3.2.8 [Config](#bp-vars-config)
+> 3.2.7 [Config](#bp-vars-config)
 
 <a name="3.2.1"></a>
 <a name="bp-var-naming"></a>
@@ -813,7 +842,7 @@ Do not arbitrarily mark variables as `Editable`.
 
 <a name="3.2.2.1"></a>
 <a name="bp-vars-editable-tooltips"></a>
-##### 3.2.2.1 Tooltips ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+##### 3.2.2.1 Tooltips ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
 All `Editable` variables, including those marked editable just so they can be marked as `Expose On Spawn`, should have a description in their `Tooltip` fields that explains how changing this value affects the behavior of the blueprint.
 
@@ -886,14 +915,6 @@ Transient variables are variables that do not need to have their value saved and
 Because of this, all transient variables should always be initialized as zero or null. To do otherwise would result in hard to debug errors.
 
 <a name="3.2.7"></a>
-<a name="bp-vars-savegame"></a>
-#### 3.2.7 SaveGame Variables ![#](https://img.shields.io/badge/lint-supported-green.svg)
-
-Only use the SaveGame property of variables when inside a class derived from `SaveGame`. Use this property only if the `SaveGame` class should save this value.
-
-Do **not** mix `SaveGame` and `Transient`, this does not make any sense.
-
-<a name="3.2.8"></a>
 <a name="bp-vars-config"></a>
 #### 3.2.8 Config Variables ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
@@ -907,7 +928,7 @@ This section describes how you should author functions, events, and event dispat
 
 <a name="3.3.1"></a>
 <a name="bp-funcs-naming"></a>
-#### 3.3.1 Function Naming
+#### 3.3.1 Function Naming ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 The naming of functions, events, and event dispatchers is critically important. Based on the name alone, certain assumptions can be made about functions. For example:
 
@@ -921,7 +942,7 @@ These questions and more can all be answered when functions are named appropriat
 
 <a name="3.3.1.1"></a>
 <a name="bp-funcs-naming-verbs"></a>
-#### 3.3.1.1 All Functions Should Be Verbs
+#### 3.3.1.1 All Functions Should Be Verbs ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 All functions and events perform some form of action, whether its getting info, calculating data, or causing something to explode. Therefore, all functions should all start with verbs. They should be worded in the present tense whenever possible. They should also have some context as to what they are doing.
 
@@ -950,13 +971,13 @@ Bad examples:
 
 <a name="3.3.1.2"></a>
 <a name="bp-funcs-naming-onrep"></a>
-#### 3.3.1.2 Property RepNotify Functions Always `OnRep_Variable`
+#### 3.3.1.2 Property RepNotify Functions Always `OnRep_Variable` ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 All functions for replicated with notification variables should have the form `OnRep_Variable`. This is forced by the Blueprint editor. If you are writing a C++ `OnRep` function however, it should also follow this convention when exposing it to Blueprints.
 
 <a name="3.3.1.3"></a>
 <a name="bp-funcs-naming-bool"></a>
-#### 3.3.1.3 Info Functions Returning Bool Should Ask Questions
+#### 3.3.1.3 Info Functions Returning Bool Should Ask Questions ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 When writing a function that does not change the state of or modify any object and is purely for getting information, state, or computing a yes/no value, it should ask a question. This should also follow [the verb rule](#bp-funcs-naming-verbs).
 
@@ -983,7 +1004,7 @@ Bad examples:
 
 <a name="3.3.1.4"></a>
 <a name="bp-funcs-naming-eventhandlers"></a>
-#### 3.3.1.4 Event Handlers and Dispatchers Should Start With `On`
+#### 3.3.1.4 Event Handlers and Dispatchers Should Start With `On` ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 Any function that handles an event or dispatches an event should with `On` and continue to follow [the verb rule](#bp-funcs-naming-verbs). The verb may move to the end however if past-tense reads better.
 
@@ -1010,7 +1031,7 @@ Bad examples:
 
 <a name="3.3.1.5"></a>
 <a name="bp-funcs-naming-rpcs"></a>
-#### 3.3.1.5 Remote Procedure Calls Should Be Prefixed With Target
+#### 3.3.1.5 Remote Procedure Calls Should Be Prefixed With Target ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 Any time an RPC is created, it should be prefixed with either `Server`, `Client`, or `Multicast`. No exceptions.
 
@@ -1032,7 +1053,7 @@ Bad examples:
 
 <a name="3.3.2"></a>
 <a name="bp-funcs-return"></a>
-#### 3.3.2 All Functions Must Have Return Nodes
+#### 3.3.2 All Functions Must Have Return Nodes ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
 All functions must have return nodes, no exceptions.
 
@@ -1044,7 +1065,7 @@ In situations like where a programmer may add a pin to a Sequence node or add lo
 
 <a name="3.3.3"></a>
 <a name="bp-graphs-funcs-node-limit"></a>
-#### 3.3.3 No Function Should Have More Than 50 Nodes 
+#### 3.3.3 No Function Should Have More Than 50 Nodes ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
 Simply, no function should have more than 50 nodes. Any function this big should be broken down into smaller functions for readability and ease of maintenance.
 
@@ -1058,21 +1079,37 @@ The following nodes are not counted as they are deemed to not increase function 
 * Function Entry
 * Self
 
+<a name="3.3.4"></a>
+<a name="bp-graphs-funcs-description"></a>
+#### 3.3.4 All Public Functions Should Have A Description ![#](https://img.shields.io/badge/lint-supported-green.svg)
+
+This rule applies more to public facing or marketplace blueprints, so that others can more easily navigate and consume your blueprint API.
+
+Simply, any function that has an access specificer of Public should have its description filled out.
+
+<a name="3.3.5"></a>
+<a name="bp-graphs-funcs-plugin-category"></a>
+#### 3.3.5 All Custom Static Plugin `BlueprintCallable` Functions Must Be Categorized By Plugin Name ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+If your project includes a plugin that defines `static` `BlueprintCallable` functions, they should have their category set to the plugin's name or a subset category of the plugin's name.
+
+For example, `Zed Camera Interface` or `Zed Camera Interface | Image Capturing`.
+
 <a name="3.4"></a>
 <a name="bp-graphs"></a>
-### 3.4 Blueprint Graphs
+### 3.4 Blueprint Graphs ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 This section covers things that apply to all Blueprint graphs.
 
 <a name="3.4.1"></a>
 <a name="bp-graphs-spaghetti"></a>
-#### 3.4.1 No Spaghetti
+#### 3.4.1 No Spaghetti ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 Wires should have clear beginnings and ends. You should never have to mentally untangle wires to make sense of a graph. Many of the following sections are dedicated to reducing spaghetti.
 
 <a name="3.4.2"></a>
 <a name="bp-graphs-align-wires"></a>
-#### 3.4.2 Align Wires Not Nodes
+#### 3.4.2 Align Wires Not Nodes ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 Always align wires, not nodes. You can't always control the size and pin location on a node, but you can always control the location of a node and thus control the wires. Straight wires provide clear linear flow. Wiggly wires wear wits wickedly. You can straighten wires by using the Straigten Connections command with BP nodes selected. Hotkey: Q
 
@@ -1087,9 +1124,221 @@ Acceptable Example: Certain nodes might not cooperate no matter how you use the 
 
 <a name="3.4.3"></a>
 <a name="bp-graphs-exec-first-class"></a>
-#### 3.4.3 White Exec Lines Are Top Priority
+#### 3.4.3 White Exec Lines Are Top Priority ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
-If you ever have to decide between straightening a linear white exec line or straightening  data lines of some kind, always straighten the white exec line.
+If you ever have to decide between straightening a linear white exec line or straightening data lines of some kind, always straighten the white exec line.
+
+<a name="3.4.4"></a>
+<a name="bp-graphs-block-comments"></a>
+#### 3.4.4 Graphs Should Be Reasonably Commented ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+Blocks of nodes should be wrapped in comments that describe their higher-level behavior. While every function should be well named so that each individual node is easily readable and understandable, groups of nodes contributing to a purpose should have their purpose described in a comment block. If a function does not have many blocks of nodes and its clear that the nodes are serving a direct purpose in the function's goal, then they do not need to be commented as the function name and  description should suffice.
+
+<a name="3.4.5"></a>
+<a name="bp-graphs-cast-error-handling"></a>
+#### 3.4.5 Graphs Should Handle Casting Errors Where Appropriate ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+If a function or event assumes that a cast always succeeds, it should appropriately report a failure in logic if the cast fails. This lets others know why something that is 'supposed to work' doesn't. A function should also attempt a graceful recover after a failed cast if its known that the reference being casted could ever fail to be casted.
+
+This does not mean every cast node should have its failure handled. In many cases, especially events regarding things like collisions, it is expected that execution flow terminates on a failed cast quietly.
+
+<a name="3.4.6"></a>
+<a name="bp-graphs-dangling-nodes"></a>
+#### 3.4.6 Graphs Should Not Have Any Dangling / Loose / Dead Nodes ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+All nodes in all blueprint graphs must have a purpose. You should not leave dangling blueprint nodes around that have no purpose or are not executed.
+
+<a name="4"></a>
+<a name="Static Meshes"></a>
+<a name="s"></a>
+## 4. Static Meshes ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+
+This section will focus on Static Mesh assets and their internals.
+
+### Sections
+
+> 4.1 [UVs](#s-uvs)
+
+> 4.2 [LODs](#s-lods)
+
+> 4.3 [Modular Socketless Snapping](#s-modular-snapping)
+
+> 4.4 [Must Have Collision](#s-collision)
+
+> 4.5 [Correct Scale](#s-scaled)
+
+<a name="4.1"></a>
+<a name="s-uvs"></a>
+### 4.1 Static Mesh UVs ![#](https://img.shields.io/badge/lint-supported-green.svg)
+
+If Linter is reporting bad UVs and you can't seem to track it down, open the resulting `.log` file in your project's `Saved/Logs` folder for exact details as to why its failing. I am hoping to include these messages in the Lint report in the future.
+
+<a name="4.1.1"></a>
+<a name="s-uvs-no-missing"></a>
+#### 4.1.1 All Meshes Must Have UVs ![#](https://img.shields.io/badge/lint-supported-green.svg)
+
+Pretty simple. All meshes, regardless how they are to be used, should not be missing UVs.
+
+<a name="4.1.2"></a>
+<a name="s-uvs-no-overlapping"></a>
+#### 4.1.2 All Meshes Must Not Have Overlapping UVs for Lightmaps ![#](https://img.shields.io/badge/lint-supported-green.svg)
+
+Pretty simple. All meshes, regardless how they are to be used, should have valid non-overlapping UVs.
+
+<a name="4.2"></a>
+<a name="s-lods"></a>
+### 4.2 LODs Should Be Set Up Correctly ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+This is a subjective check on a per-project basis, but as a general rule any mesh that can be seen at varying distances should have proper LODs.
+
+<a name="4.3"></a>
+<a name="s-modular-snapping"></a>
+### 4.2 Modular Socketless Assets Should Snap To The Grid Cleanly ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+This is a subjective check on a per-asset basis, however any modular socketless assets should snap together cleanly based on the project's grid settings.
+
+It is up to the project whether to snap based on a power of 2 grid or on a base 10 grid. However if you are authoring modular socketless assets for the marketplace, Epic's requirement is that they snap cleanly when the grid is set to 10 units or bigger.
+
+<a name="4.4"></a>
+<a name="s-collision"></a>
+### 4.4 All Meshes Must Have Collision ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+Regardless of whether an asset is going to be used for collision in a level, all meshes should have proper collision defined. This helps the engine with things such as bounds calculations, occlusion, and lighting. Collision should also be well-formed to the asset.
+
+<a name="4.5"></a>
+<a name="s-scaled"></a>
+### 4.5 All Meshes Should Be Scaled Correctly ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+This is a subjective check on a per-project basis, however all assets should be scaled correctly to their project. Level designers or blueprint authors should not have to tweak the scale of meshes to get them to confirm in the editor. Scaling meshes in the engine should be treated as a scale override, not a scale correction.
+
+<a name="5"></a>
+<a name="Particle Systems"></a>
+<a name="ps"></a>
+## 5. Particle Systems ![#](https://img.shields.io/badge/lint-supported-green.svg)
+
+This section will focus on Particle System assets and their internals.
+
+### Sections
+
+> 5.1 [Emitter Naming](#ps-naming)
+
+<a name="5.1"></a>
+<a name="ps-emitter-naming"></a>
+### 5.1 Emitter Naming ![#](https://img.shields.io/badge/lint-supported-green.svg)
+
+All emitters in a Particle System should be named something descriptive and not left to their default name "Particle Emitter".
+
+<a name="6"></a>
+<a name="Levels"></a>
+<a name="levels"></a>
+## 6. Levels / Maps ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+
+[See Terminology Note](#terms-level-map) regarding "levels" vs "maps".
+
+This section will focus on Level assets and their internals.
+
+### Sections
+
+> 6.1 [No Errors Or Warnings](#levels-no-errors-or-warnings)
+
+> 6.2 [Lighting Should Be Built](#levels-lighting-should-be-built)
+
+> 6.3 [No Player Visible Z Fighting](#evels-no-visible-z-fighting)
+
+> 6.4 [Marketplace Specific Rules](#evels-levels-mp-rules)
+
+<a name="6.1"></a>
+<a name="levels-no-errors-or-warnings"></a>
+### 6.1 No Errors Or Warnings ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+
+All levels should load with zero errors or warnings. If a level loads with any errors or warnings, they should be fixed immediately to prevent cascading issues.
+
+You can run a map check on an open level in the editor by using the console command "map check".
+
+Please note: Linter is even more strict on this than the editor is currently, and will catch load errors that the editor will resolve on its own.
+
+<a name="6.2"></a>
+<a name="levels-lighting-should-be-built"></a>
+### 6.2 Lighting Should Be Built ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+It is normal during development for levels to occasionaly not have lighting built. When doing a test/internal/shipping build or any build that is to be distributed however, lighting should always be built.
+
+<a name="6.3"></a>
+<a name="levels-no-visible-z-fighting"></a>
+### 6.3 No Player Visible Z Fighting ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+Levels should not have any [z-fighting](https://en.wikipedia.org/wiki/Z-fighting) in all areas visible to the player.
+
+<a name="6.4"></a>
+<a name="levels-mp-rules"></a>
+### 6.4 Marketplace Specific Rules ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+If a project is to be sold on the UE4 Marketplace, it must follow these rules.
+
+<a name="6.4.1"></a>
+<a name="levels-mp-rules-overview"></a>
+### 6.4.1 Overview Level ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+If your project contains assets that should be visualized or demoed, you must have a map within your project that contains the name "Overview".
+
+This overview map, if it is visualizing assets, should be set up according to [Epic's guidelines](http://help.epicgames.com/customer/en/portal/articles/2592186-marketplace-submission-guidelines-preparing-your-assets#Required%20Levels%20and%20Maps).
+
+For example, `InteractionComponent_Overview`.
+
+<a name="6.4.2"></a>
+<a name="levels-mp-rules-demo"></a>
+### 6.4.2 Demo Level ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+If your project contains assets that should be demoed or come with some sort of tutorial, you must have a map within your project that contains the name "Demo". This level should also contain documentation within it in some form that illustrates how to use your project. See Epic's Content Examples project for good examples on how to do this.
+
+If your project is a gameplay mechanic or other form of system as opposed to an art pack, this can be the same as your "Overview" map.
+
+For example, `InteractionComponent_Overview_Demo`, `ExplosionKit_Demo`.
+
+<a name="7"></a>
+<a name="textures"></a>
+## 7. Textures ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+This section will focus on Texture assets and their internals.
+
+### Sections
+
+> 7.1 [Dimensions Are Powers of 2](#textures-dimension)
+
+> 7.2 [Texture Density Should Be Uniform](#textures-dimension)
+
+> 7.3 [Textures Should Be No Bigger than 8192](#textures-max-size)
+
+> 7.4 [Correct Texture Groups](#textures-textures-group)
+
+<a name="7.1"></a>
+<a name="textures-dimensions"></a>
+### 7.1 Dimensions Are Powers of 2 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+All textures, except for UI textures, must have its dimensions in multiples of powers of 2. Textures do not have to be square.
+
+For example, `128x512`, `1024x1024`, `2048x1024`, `1024x2048`, `1x512`.
+
+<a name="7.2"></a>
+<a name="textures-density"></a>
+### 7.2 Texture Density Should Be Uniform ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+All textures should be of a size appropriate for their standard use case. Appropriate texture density varies from project to project, but all textures within that project should have a consistent density.
+
+For example, if a project's texture density is 8 pixel per 1 unit, a texture that is meant to be applied to a 100x100 unit cube should be 1024x1024, as that is the closest power of 2 that matches the project's texture density.
+
+<a name="7.3"></a>
+<a name="textures-max-size"></a>
+### 7.3 Textures Should Be No Bigger than 8192 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+No texture should have a dimension that exceeds 8192 in size, unless you have a very explicit reason to do so. Often, using a texture this big is simply just a waste of resources.
+
+<a name="7.4"></a>
+<a name="textures-group"></a>
+### 7.4 Textures Should Be Grouped Correctly ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+
+Every texture has a Texture Group property used for LODing, and this should be set correctly based on its use. For example, all UI textures should belong in the UI texture group.
+
 
 ## Contributors Original Style Guide
 
