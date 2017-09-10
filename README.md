@@ -401,6 +401,10 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
 <pre>
 |-- Content
     |-- <a href="#2.2">GenericShooter</a>
+        |-- AI
+        |   |-- Behaviors
+        |   |-- Services
+        |   |-- Tasks
         |-- Characters
         |   |-- Common
         |   |   |-- <a href="#2.7">Animations</a>
@@ -439,12 +443,17 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |-- Placeables
         |   |-- Pickups
         |-- UI
+        |   |-- Menus
+        |-- Vehicles
+        |   |-- Common
+        |   |-- Buggy
+        |   |-- Tank
         |-- Weapons
-            |-- Common
-            |-- Pistols
-            |   |-- DesertEagle
-            |   |-- RocketPistol
-            |-- Rifles
+        |   |-- Common
+        |   |-- Pistols
+        |   |   |-- DesertEagle
+        |   |   |-- RocketPistol
+        |   |-- Rifles
 </pre>
 
 The reasons for this structure are listed in the following sub-sections.
