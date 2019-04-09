@@ -102,6 +102,10 @@ Gamemakin LLC is not a lawyer, but please don't introduce illegal actions and be
 > 1. [Asset Naming Conventions](#anc)
 > 1. [Directory Structure](#structure)
 > 1. [Blueprints](#bp)
+> 1. [Static Meshes](#s)
+> 1. [Particle Systems](#ps)
+> 1. [Levels / Maps](#levels)
+> 1. [Textures](#textures)
 
 <a name="anc"></a>
 <a name="1"></a>
@@ -178,7 +182,7 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 
 > 1.2.9 [Physics](#anc-physics)
 
-> 1.2.10 [Sound](#anc-sound)
+> 1.2.10 [Sound](#anc-sounds)
 
 > 1.2.11 [User Interface](#anc-ui)
 
@@ -234,9 +238,11 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | AI Controller           |            | _AIC        |                                  |
 | Behavior Tree           |            | _BT         |                                  |
 | Blackboard              |            | _BB         |                                  |
-| Decorator               |            | _BTDecorator |                                  |
+| Decorator               |            | _BTDecorator|                                  |
 | Service                 |            | _BTService  |                                  |
 | Task                    |            | _BTTask     |                                  |
+| Environment Query       |            | _EQS        |                                  |
+| EnvQueryContext         |            | _EQSContext |                                  |
 
 <a name="anc-bp"></a>
 <a name="1.2.4"></a>
@@ -245,7 +251,7 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Blueprint               |            | _BP        |                                  |
-| Blueprint Component	  |            | Component_BP | I.e. InventoryComponent_BP       |
+| Blueprint Component	  |            | Component_BP | e.g. InventoryComponent_BP     |
 | Blueprint Function Library |         | _BPFL      |                                  |
 | Blueprint Interface     |            | _BPI       |                                  |
 | Blueprint Macro Library |            | _BPML      | Do not use macro libraries if possible. |
@@ -267,6 +273,7 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | Material Parameter Collection |      | _MPC       |                                  |
 | Subsurface Profile      |            | _SP        |                                  |
 | Physical Materials      |            | _PM        |                                  |
+| Decal                   |            | _Decal     |                                  |
 
 <a name="anc-textures"></a>
 <a name="1.2.6"></a>
@@ -325,6 +332,8 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Redirector              |            |            | These should be fixed up ASAP.   |
 | Sprite Sheet            |            | _SS        |                                  |
 | Static Vector Field     |            | _VF        |                                  |
+| Substance Graph Instance   |         | _SGI       |                                  |
+| Substance Instance Factory |         | _SIF       |                                  |
 | Touch Interface Setup   |            | _TI        |                                  |
 | Vector Curve            | Curve_     | _Vector    |                                  |
 
@@ -347,7 +356,7 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Physical Material       |            | _PM        |                                  |
-| Physical Asset	      |            | _SK_Physics|                                  |
+| Physical Asset	  |            | _SK_Physics|                                  |
 | Destructible Mesh       |            | _DM        |                                  |
 
 <a name="anc-sounds"></a>
@@ -386,6 +395,9 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | Particle System         |            | _PS        |                                  |
 | Material (Post Process) |            | _PP        |                                  |
+
+**[⬆ Back to Top](#table-of-contents)**
+
 
 <a name="2"></a>
 <a name="structure"></a>
@@ -651,6 +663,9 @@ If you find that the content browser has an empty folder you can't delete, you s
 1. Open the editor. Confirm everything still works as expected. If it doesn't, revert, figure out what went wrong, and try again.
 1. Ensure the folder is now gone.
 1. Submit changes to source control.
+
+**[⬆ Back to Top](#table-of-contents)**
+
 
 <a name="3"></a>
 <a name="bp"></a>
@@ -1015,7 +1030,7 @@ Bad examples:
 <a name="bp-funcs-naming-eventhandlers"></a>
 #### 3.3.1.4 Event Handlers and Dispatchers Should Start With `On` ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
-Any function that handles an event or dispatches an event should with `On` and continue to follow [the verb rule](#bp-funcs-naming-verbs). The verb may move to the end however if past-tense reads better.
+Any function that handles an event or dispatches an event should start with `On` and continue to follow [the verb rule](#bp-funcs-naming-verbs). The verb may move to the end however if past-tense reads better.
 
 [Collocations](http://dictionary.cambridge.org/us/grammar/british-grammar/about-words-clauses-and-sentences/collocation) of the word `On` are exempt from following the verb rule.
 
@@ -1157,6 +1172,9 @@ This does not mean every cast node should have its failure handled. In many case
 
 All nodes in all blueprint graphs must have a purpose. You should not leave dangling blueprint nodes around that have no purpose or are not executed.
 
+**[⬆ Back to Top](#table-of-contents)**
+
+
 <a name="4"></a>
 <a name="Static Meshes"></a>
 <a name="s"></a>
@@ -1220,6 +1238,9 @@ Regardless of whether an asset is going to be used for collision in a level, all
 
 This is a subjective check on a per-project basis, however all assets should be scaled correctly to their project. Level designers or blueprint authors should not have to tweak the scale of meshes to get them to confirm in the editor. Scaling meshes in the engine should be treated as a scale override, not a scale correction.
 
+**[⬆ Back to Top](#table-of-contents)**
+
+
 <a name="5"></a>
 <a name="Particle Systems"></a>
 <a name="ps"></a>
@@ -1236,6 +1257,9 @@ This section will focus on Particle System assets and their internals.
 ### 5.1 Emitter Naming ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
 All emitters in a Particle System should be named something descriptive and not left to their default name "Particle Emitter".
+
+**[⬆ Back to Top](#table-of-contents)**
+
 
 <a name="6"></a>
 <a name="Levels"></a>
@@ -1304,6 +1328,9 @@ If your project is a gameplay mechanic or other form of system as opposed to an 
 
 For example, `InteractionComponent_Overview_Demo`, `ExplosionKit_Demo`.
 
+**[⬆ Back to Top](#table-of-contents)**
+
+
 <a name="7"></a>
 <a name="textures"></a>
 ## 7. Textures ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
@@ -1347,6 +1374,8 @@ No texture should have a dimension that exceeds 8192 in size, unless you have a 
 ### 7.4 Textures Should Be Grouped Correctly ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 Every texture has a Texture Group property used for LODing, and this should be set correctly based on its use. For example, all UI textures should belong in the UI texture group.
+
+**[⬆ Back to Top](#table-of-contents)**
 
 
 ## Contributors Original Style Guide
