@@ -414,18 +414,22 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
 <pre>
 |-- Content
     |-- <a href="#2.2">GenericShooter</a>
-        |-- AI
-        |   |-- Behaviors
-        |   |-- Services
-        |   |-- Tasks
-        |-- Characters
+        |-- Actors
         |   |-- Common
         |   |   |-- <a href="#2.7">Animations</a>
         |   |   |-- Audio
+        |   |-- Vehicles
+        |   |   |-- Common
+        |   |   |-- Buggy
+        |   |   |-- Tank
         |   |-- Player
         |   |-- Jack
         |   |-- Steve
         |   |-- <a href="#2.1.3">Zoe</a>
+        |-- AI
+        |   |-- Behaviors
+        |   |-- Services
+        |   |-- Tasks
         |-- Effects
         |   |-- Electrical
         |   |-- Fire
@@ -456,10 +460,6 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |-- Music
         |-- UI
         |   |-- Menus
-        |-- Vehicles
-        |   |-- Common
-        |   |-- Buggy
-        |   |-- Tank
         |-- Weapons
         |   |-- Common
         |   |-- Pistols
