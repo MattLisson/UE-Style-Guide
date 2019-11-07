@@ -40,7 +40,7 @@ The words 'variable' and 'property' in most contexts are interchangable. If they
 
 <a name="terms-property"></a>
 ###### Property
-Usually refers to a variable defined in a class. For example, if `BP_Barrel` had a variable `bExploded`, `bExploded` may be referred to as a property of `BP_Barrel`.
+Usually refers to a variable defined in a class. For example, if `Barrel_BP` had a variable `bExploded`, `bExploded` may be referred to as a property of `Barrel_BP`.
 
 When in the context of a class, often used to imply accessing previously defined data.
 
@@ -784,7 +784,7 @@ All variable names must not be redundant with their context as all variable refe
 <a name="3.2.1.5e"></a>
 ###### 3.2.1.5e Examples:
 
-Consider a Blueprint called `BP_PlayerCharacter`.
+Consider a Blueprint called `PlayerCharacter_BP`.
 
 **Bad**
 
@@ -795,7 +795,7 @@ Consider a Blueprint called `BP_PlayerCharacter`.
 * `CharacterSkills`
 * `ChosenCharacterSkin`
 
-All of these variables are named redundantly. It is implied that the variable is representative of the `BP_PlayerCharacter` it belongs to because it is `BP_PlayerCharacter` that is defining these variables.
+All of these variables are named redundantly. It is implied that the variable is representative of the `PlayerCharacter_BP` it belongs to because it is `PlayerCharacter_BP` that is defining these variables.
 
 **Good**
 
@@ -836,13 +836,13 @@ Non-atomic or complex variables are variables that represent data as a collectio
 
 These variables should include their type name while still considering their context.
 
-If a class owns an instance of a complex variable, i.e. if a `BP_PlayerCharacter` owns a `BP_Hat`, it should be stored as the variable type as without any name modifications.
+If a class owns an instance of a complex variable, i.e. if a `PlayerCharacter_BP` owns a `Hat_BP`, it should be stored as the variable type as without any name modifications.
 
 Example: Use `Hat`, `Flag`, and `Ability` **not** `MyHat`, `MyFlag`, and `PlayerAbility`.
 
 If a class does not own the value a complex variable represents, you should use a noun along with the variable type.
 
-Example: If a `BP_Turret` has the ability to target a `BP_PlayerCharacter`, it should store its target as `TargetPlayer` as when in the context of `BP_Turret` it should be clear that it is a reference to another complex variable type that it does not own.
+Example: If a `Turret_BP` has the ability to target a `PlayerCharacter_BP`, it should store its target as `TargetPlayer` as when in the context of `Turret_BP` it should be clear that it is a reference to another complex variable type that it does not own.
 
 
 <a name="3.2.1.8"></a>
