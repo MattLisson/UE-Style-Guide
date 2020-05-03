@@ -664,6 +664,13 @@ If you find that the content browser has an empty folder you can't delete, you s
 1. Ensure the folder is now gone.
 1. Submit changes to source control.
 
+<a name="2.10"></a>
+<a name="structure-content-source-folder"></a>
+
+### 2.10 Content Source Folder
+
+Any raw source data for art and other assets used in the Content folder,  like `blend`, `psd` or `mxproj` files, should also be versioned in a `ContentSource` folder. This folder should be located in the Unreal projects' root. It can be versioned either in the same source control repository as the Unreal project or a different repository if the raw files' size grows too big.
+
 **[⬆ Back to Top](#table-of-contents)**
 
 
