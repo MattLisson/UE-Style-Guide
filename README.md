@@ -248,17 +248,17 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 <a name="1.2.4"></a>
 ### 1.2.4 Blueprints ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
-| ----------------------- | ---------- | ---------- | -------------------------------- |
-| Blueprint               |            | _BP        |                                  |
-| Blueprint Component	  |            | Component_BP | e.g. InventoryComponent_BP     |
-| Blueprint Function Library |         | _BPFL      |                                  |
-| Blueprint Interface     |            | _BPI       |                                  |
-| Blueprint Macro Library |            | _BPML      | Do not use macro libraries if possible. |
-| Enumeration             |            | _E         | No underscore.                   |
-| Structure               |            | _F or S    | No underscore.                   |
-| Tutorial Blueprint      |            | _TBP       |                                  |
-| Widget Blueprint        |            | _WBP       |                                  |
+| Asset Type                 | Prefix     | Suffix       | Notes                                   |
+| -------------------------- | ---------- | ------------ | --------------------------------------- |
+| Blueprint                  |            | _BP          |                                         |
+| Blueprint Component	     |            | Component_BP | e.g. InventoryComponent_BP              |
+| Blueprint Function Library |            | _BPFL        |                                         |
+| Blueprint Interface        |            | _BPI         |                                         |
+| Blueprint Macro Library    |            | _BPML        | Do not use macro libraries if possible. |
+| Enumeration                | E          |              | No underscore, e.g. EDirection.         |
+| Structure                  |            | _S           |                                         |
+| Tutorial Blueprint         |            | _TBP         |                                         |
+| Widget Blueprint           |            | _WBP         |                                         |
 
 <a name="anc-materials"></a>
 <a name="1.2.5"></a>
