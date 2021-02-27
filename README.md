@@ -440,6 +440,8 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Fire
         |   |-- Weather
         |-- Environment
+        |   |-- Audio
+        |   |   |-- Music
         |   |-- Background
         |   |-- Buildings
         |   |-- Foliage
@@ -476,7 +478,6 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Paint
         |   |-- Utility
         |   |-- Weathering
-        |-- Music
         |-- UI
         |   |-- HUD
         |   |-- Menus
