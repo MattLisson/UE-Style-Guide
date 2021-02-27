@@ -615,7 +615,7 @@ Use `/Content/Project/Gameplay` folder for assets that are absolutely fundamenta
 
 This creates a very clear "don't touch these" message for other team members. Non-engineers should have very little reason to enter the `Gameplay` folder. Following good code structure style, designers should be making their gameplay tweaks in child classes that expose functionality. World builders should be using prefab Blueprints in designated folders instead of potentially abusing base classes.
 
-For example, if your project requires pickups that can be placed in a level, there should exist a base Pickup class in `Gameplay/Pickups` that defines base behavior for a pickup. Specific pickups such as a Health or Ammo should exist in a folder such as `/Content/Project/Environment/Pickups/`. Game designers can define and tweak pickups in this folder however they please, but they should not touch `Gameplay/Pickups` as they may unintentionally break pickups project-wide.
+For example, if your project requires pickups that can be placed in a level, there should exist a base Pickup class in `Gameplay/Pickups` that defines base behavior for a pickup. Specific pickups such as a Health or Ammo should exist in a folder such as `/Content/Project/Items/Pickups/`. Game designers can define and tweak pickups in this folder however they please, but they should not touch `Gameplay/Pickups` as they may unintentionally break pickups project-wide.
 
 <a name="2.6"></a>
 <a name="structure-assettypes"></a>
