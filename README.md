@@ -391,10 +391,19 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 <a name="1.2.12"></a>
 ### 1.2.12 Effects ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
-| Asset Type              | Prefix     | Suffix     | Notes                            |
-| ----------------------- | ---------- | ---------- | -------------------------------- |
-| Particle System         |            | _PS        |                                  |
-| Material (Post Process) |            | _PP        |                                  |
+| Asset Type                            | Prefix     | Suffix     | Notes                            |
+| ------------------------------------- | ---------- | ---------- | -------------------------------- |
+| Material (Post Process)               |            | _PP        |                                  |
+| Niagara Dynamic Input Script          | FX_        | _IS        |                                  |
+| Niagara Effect Type                   | FX_        | _ET        |                                  |
+| Niagara Emitter                       | FX_        | _E         |                                  |
+| Niagara Function Script               | FX_        | _FS        |                                  |
+| Niagara Module                        | FX_        | _M         |                                  |
+| Niagara Module Script                 | FX_        | _MS        |                                  |
+| Niagara Parameter Collection          | FX_        | _P         |                                  |
+| Niagara Parameter Collection Instance | FX_        | _PI        |                                  |
+| Niagara System                        | FX_        | _S         |                                  |
+| Particle System                       |            | _PS        |                                  |
 
 **[⬆ Back to Top](#table-of-contents)**
 
