@@ -418,7 +418,7 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
 
 > If you are using the suffix [naming convention](#1.2) above, using folders to contain assets of similar types such as `Meshes`, `Textures`, and `Materials` is a redundant practice as asset types can already both be searched by suffix as well as be filtered in the content browser.
 
-<a name="2e1"><a>
+<a name="2e1"></a>
 ### 2e1 Example Project Content Structure
 <pre>
 |-- Content
@@ -427,18 +427,14 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Common
         |   |   |-- <a href="#2.7">Animations</a>
         |   |   |-- Audio
+        |   |-- NPCs/Group Name
+        |   |   |-- Jack
+        |   |   |-- Steve
+        |   |   |-- <a href="#2.1.3">Zoe</a>
+        |   |-- Player        
         |   |-- Vehicles
-        |   |   |-- Common
         |   |   |-- Buggy
         |   |   |-- Tank
-        |   |-- Player
-        |   |-- Jack
-        |   |-- Steve
-        |   |-- <a href="#2.1.3">Zoe</a>
-        |-- AI
-        |   |-- Behaviors
-        |   |-- Services
-        |   |-- Tasks
         |-- Effects
         |   |-- Electrical
         |   |-- Fire
@@ -452,10 +448,24 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Landscape
         |   |-- Water
         |-- <a href="#2.5">Gameplay</a>
+        |   |-- AI
+        |   |   |-- Behaviors
+        |   |   |-- Services
+        |   |   |-- Tasks
         |   |-- <a href="#2.1.2">GameModes</a>
         |   |-- Interactables
         |   |-- Pickups
-        |   |-- Placeables
+        |   |-- Vehicles
+        |   |-- Weapons
+        |-- Items
+        |   |-- Interactables
+        |   |-- Pickups
+        |   |-- Weapons
+        |   |   |-- Common
+        |   |   |-- Pistols
+        |   |   |   |-- DesertEagle
+        |   |   |   |-- RocketPistol
+        |   |   |-- Rifles
         |-- <a href="#2.4">Maps</a>
         |   |-- Campaign1
         |   |-- Campaign2
@@ -468,13 +478,8 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Weathering
         |-- Music
         |-- UI
+        |   |-- HUD
         |   |-- Menus
-        |-- Weapons
-        |   |-- Common
-        |   |-- Pistols
-        |   |   |-- DesertEagle
-        |   |   |-- RocketPistol
-        |   |-- Rifles
 </pre>
 
 The reasons for this structure are listed in the following sub-sections.
