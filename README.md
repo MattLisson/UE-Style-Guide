@@ -576,30 +576,30 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Vehicles
         |   |   |-- Buggy
         |   |   |-- Tank
+        |-- <a href="#2.5">Core</a>
+        |   |-- Actors
+        |   |-- AI
+        |   |-- <a href="#2.1.2">GameModes</a>
+        |   |-- Environment
+        |   |-- Items
         |-- Effects
+        |   |-- Audio
         |   |-- Electrical
         |   |-- Fire
         |   |-- Weather
         |-- Environment
         |   |-- Audio
         |   |   |-- Music
-        |   |-- Background
-        |   |-- Buildings
-        |   |-- Foliage
-        |   |-- Props
-        |   |-- Sky/Space
-        |   |-- Landscape
-        |   |-- Water
-        |-- <a href="#2.5">Gameplay</a>
-        |   |-- AI
-        |   |   |-- Behaviors
-        |   |   |-- Services
-        |   |   |-- Tasks
-        |   |-- <a href="#2.1.2">GameModes</a>
-        |   |-- Interactables
-        |   |-- Pickups
-        |   |-- Vehicles
-        |   |-- Weapons
+        |   |-- Industrial
+        |   |   |-- Ambient
+        |   |   |-- Machinery
+        |   |   |-- Pipes
+        |   |-- Nature
+        |   |   |-- Ambient
+        |   |   |-- Foliage
+        |   |   |-- Rocks
+        |   |   |-- Trees
+        |   |-- Office
         |-- Items
         |   |-- Interactables
         |   |-- Pickups
@@ -620,8 +620,11 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Utility
         |   |-- Weathering
         |-- UI
+        |   |-- Audio
+        |   |-- Fonts
         |   |-- HUD
-        |   |-- Menus
+        |   |-- Materials
+        |   |-- Menu
 </pre>
 
 The reasons for this structure are listed in the following sub-sections.
@@ -732,13 +735,13 @@ This also simplifies the job of cooking for engineers. Wrangling levels for a bu
 
 <a name="2.5"></a>
 <a name="structure-core"></a>
-### 2.5 Use A `Gameplay` Folder For Critical Blueprints And Other Assets
+### 2.5 Use A `Core` Folder For Critical Blueprints And Other Assets
 
-Use `/Content/Project/Gameplay` folder for assets that are absolutely fundamental to a project's workings. For example, base `GameMode`, `GameState`, and related Blueprints should live here.
+Use `/Content/Project/Core` folder for assets that are absolutely fundamental to a project's workings. For example, base `GameMode`, `GameState`, and related Blueprints should live here.
 
-This creates a very clear "don't touch these" message for other team members. Non-engineers should have very little reason to enter the `Gameplay` folder. Following good code structure style, designers should be making their gameplay tweaks in child classes that expose functionality. World builders should be using prefab Blueprints in designated folders instead of potentially abusing base classes.
+This creates a very clear "don't touch these" message for other team members. Non-engineers should have very little reason to enter the `Core` folder. Following good code structure style, designers should be making their gameplay tweaks in child classes that expose functionality. World builders should be using prefab Blueprints in designated folders instead of potentially abusing base classes.
 
-For example, if your project requires pickups that can be placed in a level, there should exist a base Pickup class in `Gameplay/Pickups` that defines base behavior for a pickup. Specific pickups such as a Health or Ammo should exist in a folder such as `/Content/Project/Items/Pickups/`. Game designers can define and tweak pickups in this folder however they please, but they should not touch `Gameplay/Pickups` as they may unintentionally break pickups project-wide.
+For example, if your project requires pickups that can be placed in a level, there should exist a base Pickup class in `Core/Pickups` that defines base behavior for a pickup. Specific pickups such as a Health or Ammo should exist in a folder such as `/Content/Project/Items/Pickups/`. Game designers can define and tweak pickups in this folder however they please, but they should not touch `Core/Pickups` as they may unintentionally break pickups project-wide.
 
 <a name="2.6"></a>
 <a name="structure-assettypes"></a>
