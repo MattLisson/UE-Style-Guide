@@ -190,11 +190,13 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 
 > 1.2.9 [Physics](#anc-physics)
 
-> 1.2.10 [Sound](#anc-sounds)
+> 1.2.10 [Sounds](#anc-sounds)
 
 > 1.2.11 [User Interface](#anc-ui)
 
 > 1.2.12 [Effects](#anc-effects)
+
+> 1.2.13 [Input](#anc-input)
 
 <a name="anc-common"></a>
 <a name="1.2.1"></a>
@@ -213,7 +215,6 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 | Static Mesh             |            | _SM        |                                  |
 | Skeletal Mesh           |            | _SK        |                                  |
 | Texture                 | T_         | _?         | See [Textures](#anc-textures)    |
-| Particle System         |            | _PS        |                                  |
 | Widget Blueprint        |            | _WBP       |                                  |
 
 <a name="anc-animations"></a>
@@ -332,7 +333,6 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Data Table              |            | _DT        |                                  |
 | Float Curve             | Curve_     | _Float     |                                  |
 | Foliage Type            |            | _FT        |                                  |
-| Force Feedback Effect   |            | _FFE       |                                  |
 | Landscape Grass Type    |            | _LG        |                                  |
 | Landscape Layer         |            | _LL        |                                  |
 | Matinee Data            |            | _Matinee   |                                  |
@@ -416,6 +416,17 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Niagara Parameter Collection Instance | FX_        | _PI        |                                  |
 | Niagara System                        | FX_        | _S         |                                  |
 | Particle System                       |            | _PS        |                                  |
+
+<a name="anc-input"></a>
+<a name="1.2.13"></a>
+### 1.2.13 Input
+
+| Asset Type                            | Prefix     | Suffix     | Notes                            |
+| ------------------------------------- | ---------- | ---------- | -------------------------------- |
+| Input Mapping Context                 |            | _IMC       |                                  |
+| Input Action                          |            | _IA        |                                  |
+| Force Feedback Attenuation            |            | _FFA       |                                  |
+| Force Feedback Effect                 |            | _FFE       |                                  |
 
 **[⬆ Back to Top](#table-of-contents)**
 
