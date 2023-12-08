@@ -121,7 +121,7 @@ The reasoning for this is this will ensure the greatest compatibility of all dat
 
 Naming conventions should be treated as law. A project that conforms to a naming convention is able to have its assets managed, searched, parsed, and maintained with incredible ease.
 
-Most things are suffixed with suffixes being generally an acronym of the asset type followed by an underscore.
+Most things are suffixed with suffixes being generally an acronym of the asset type separated by an underscore from the base asset name.
 
 <a name="base-asset-name"></a>
 <a name="1.1"></a>
@@ -129,7 +129,7 @@ Most things are suffixed with suffixes being generally an acronym of the asset t
 
 All assets should have a _Base Asset Name_. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the standard of  `Prefix_BaseAssetName_Variant_Suffix`.
 
-Keeping the pattern `Prefix_BaseAssetName_Variant_Suffix` and in mind and using common sense is generally enough to warrant good asset names. Here are some detailed rules regarding each element.
+Keeping the pattern `Prefix_BaseAssetName_Variant_Suffix` in mind and using common sense is generally enough to warrant good asset names. Here are some detailed rules regarding each element.
 
 `Prefix` and `Suffix` are to be determined by the asset type through the following [Asset Name Modifier](#asset-name-modifiers) tables.
 
@@ -304,11 +304,11 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 | Texture (Specular)      | T_         | _S         |                                  |
 | Texture (Displacement)  | T_         | _DP        |                                  |
 | Texture (Packed)        | T_         | _*         | See notes below about [packing](#anc-textures-packing). |
-| Texture Cube            | TC_        |            |                                  |
-| Media Texture           | MT_        |            |                                  |
-| Render Target           | RT_        |            |                                  |
-| Cube Render Target      | RTC_       |            |                                  |
-| Texture Light Profile   | TLP        |            |                                  |
+| Texture Cube            |            | _TC        |                                  |
+| Media Texture           |            | _MT        |                                  |
+| Render Target           |            | _RT        |                                  |
+| Cube Render Target      |            | _RTC       |                                  |
+| Texture Light Profile   |            | _TLP       |                                  |
 
 <a name="anc-textures-packing"></a>
 <a name="1.2.6.1"></a>
@@ -406,16 +406,19 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 | Asset Type                            | Prefix     | Suffix     | Notes                            |
 | ------------------------------------- | ---------- | ---------- | -------------------------------- |
 | Material (Post Process)               |            | _PP        |                                  |
-| Niagara Dynamic Input Script          | FX_        | _IS        |                                  |
-| Niagara Effect Type                   | FX_        | _ET        |                                  |
 | Niagara Emitter                       | FX_        | _E         |                                  |
-| Niagara Function Script               | FX_        | _FS        |                                  |
+| Niagara System                        | FX_        | _S         |                                  |
 | Niagara Module                        | FX_        | _M         |                                  |
+| Niagara Dynamic Input Script          | FX_        | _IS        |                                  |
+| Niagara Function Script               | FX_        | _FS        |                                  |
 | Niagara Module Script                 | FX_        | _MS        |                                  |
+| Niagara Data Channel                  | FX_        | _DC        |                                  |
+| Niagara Effect Type                   | FX_        | _ET        |                                  |
 | Niagara Parameter Collection          | FX_        | _P         |                                  |
 | Niagara Parameter Collection Instance | FX_        | _PI        |                                  |
-| Niagara System                        | FX_        | _S         |                                  |
-| Particle System                       |            | _PS        |                                  |
+| Niagara Parameter Definitions         | FX_        | _PD        |                                  |
+| Niagara Simulation Cache              | FX_        | _SC        |                                  |
+| Niagara Validation Rule Set           | FX_        | _VRS       |                                  |
 
 <a name="anc-input"></a>
 <a name="1.2.13"></a>
@@ -587,13 +590,13 @@ After a migration, safe merging of assets can be done using the 'Replace Referen
 <a name="2.2.2e1"></a>
 ##### 2.2.2e1 Master Material Example
 
-For example, say you created a master material in one project that you would like to use in another project so you migrated that asset over. If this asset is not in a top level folder, it may have a name like `Content/MaterialLibrary/M_Master`. If the target project doesn't have a master material already, this should work without issue.
+For example, say you created a master material in one project that you would like to use in another project so you migrated that asset over. If this asset is not in a top level folder, it may have a name like `Content/MaterialLibrary/Master_M`. If the target project doesn't have a master material already, this should work without issue.
 
 As work on one or both projects progress, their respective master materials may change to be tailored for their specific projects due to the course of normal development.
 
-The issue comes when, for example, an artist for one project created a nice generic modular set of static meshes and someone wants to include that set of static meshes in the second project. If the artist who created the assets used material instances based on `Content/MaterialLibrary/M_Master` as they're instructed to, when a migration is performed there is a great chance of conflict for the previously migrated `Content/MaterialLibrary/M_Master` asset.
+The issue comes when, for example, an artist for one project created a nice generic modular set of static meshes and someone wants to include that set of static meshes in the second project. If the artist who created the assets used material instances based on `Content/MaterialLibrary/Master_M` as they're instructed to, when a migration is performed there is a great chance of conflict for the previously migrated `Content/MaterialLibrary/Master_M` asset.
 
-This issue can be hard to predict and hard to account for. The person migrating the static meshes may not be the same person who is familiar with the development of both project's master material, and they may not be even aware that the static meshes in question rely on material instances which then rely on the master material. The Migrate tool requires the entire chain of dependencies to work however, and so it will be forced to grab `Content/MaterialLibrary/M_Master` when it copies these assets to the other project and it will overwrite the existing asset.
+This issue can be hard to predict and hard to account for. The person migrating the static meshes may not be the same person who is familiar with the development of both project's master material, and they may not be even aware that the static meshes in question rely on material instances which then rely on the master material. The Migrate tool requires the entire chain of dependencies to work however, and so it will be forced to grab `Content/MaterialLibrary/Master_M` when it copies these assets to the other project and it will overwrite the existing asset.
 
 It is at this point where if the master materials for both projects are incompatible in _any way_, you risk breaking possibly the entire material library for a project as well as any other dependencies that may have already been migrated, simply because assets were not stored in a top level folder. The simple migration of static meshes now becomes a very ugly task.
 
@@ -1246,8 +1249,6 @@ This section will focus on Static Mesh assets and their internals.
 <a name="s-uvs"></a>
 ### 4.1 Static Mesh UVs
 
-If Linter is reporting bad UVs and you can't seem to track it down, open the resulting `.log` file in your project's `Saved/Logs` folder for exact details as to why it's failing. I am hoping to include these messages in the Lint report in the future.
-
 <a name="4.1.1"></a>
 <a name="s-uvs-no-missing"></a>
 #### 4.1.1 All Meshes Must Have UVs
@@ -1338,8 +1339,6 @@ This section will focus on Level assets and their internals.
 All levels should load with zero errors or warnings. If a level loads with any errors or warnings, they should be fixed immediately to prevent cascading issues.
 
 You can run a map check on an open level in the editor by using the console command "map check".
-
-Please note: Linter is even more strict on this than the editor is currently, and will catch load errors that the editor will resolve on its own.
 
 <a name="6.2"></a>
 <a name="levels-lighting-should-be-built"></a>
