@@ -564,10 +564,31 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
 <pre>
 |-- Content
     |-- <a href="#2.2">GenericShooter</a>
-        |-- Actors
+        |-- <a href="#2.5">Core</a>
+        |   |-- Actors
+        |   |-- AI
+        |   |-- Engine
+        |   |-- Environment
+        |   |-- <a href="#2.1.2">GameModes</a>
+        |   |-- Items
+        |-- Effects
+        |   |-- Electrical
+        |   |   |-- Sounds
+        |   |-- Fire
+        |   |-- Weather
+        |-- Entities
         |   |-- Common
         |   |   |-- <a href="#2.7">Animations</a>
         |   |   |-- Sounds
+        |   |-- Items
+        |   |   |-- Interactables
+        |   |   |-- Pickups
+        |   |   |-- Weapons
+        |   |   |   |-- Common
+        |   |   |   |-- Pistols
+        |   |   |   |   |-- DesertEagle
+        |   |   |   |   |-- RocketPistol
+        |   |   |   |-- Rifles
         |   |-- NPCs/Group Name
         |   |   |-- Jack
         |   |   |   |-- Dialog
@@ -579,17 +600,6 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Vehicles
         |   |   |-- Buggy
         |   |   |-- Tank
-        |-- <a href="#2.5">Core</a>
-        |   |-- Actors
-        |   |-- AI
-        |   |-- <a href="#2.1.2">GameModes</a>
-        |   |-- Environment
-        |   |-- Items
-        |-- Effects
-        |   |-- Electrical
-        |   |   |-- Sounds
-        |   |-- Fire
-        |   |-- Weather
         |-- Environment
         |   |-- Music
         |   |-- Industrial
@@ -603,15 +613,6 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |   |-- Rocks
         |   |   |-- Trees
         |   |-- Office
-        |-- Items
-        |   |-- Interactables
-        |   |-- Pickups
-        |   |-- Weapons
-        |   |   |-- Common
-        |   |   |-- Pistols
-        |   |   |   |-- DesertEagle
-        |   |   |   |-- RocketPistol
-        |   |   |-- Rifles
         |-- <a href="#2.4">Maps</a>
         |   |-- Campaign1
         |   |-- Campaign2
