@@ -567,12 +567,15 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |-- Actors
         |   |-- Common
         |   |   |-- <a href="#2.7">Animations</a>
-        |   |   |-- Audio
+        |   |   |-- Sounds
         |   |-- NPCs/Group Name
         |   |   |-- Jack
+        |   |   |   |-- Dialog
         |   |   |-- Steve
         |   |   |-- <a href="#2.1.3">Zoe</a>
-        |   |-- Player        
+        |   |-- Player
+        |   |   |-- Dialog
+        |   |   |-- Sounds
         |   |-- Vehicles
         |   |   |-- Buggy
         |   |   |-- Tank
@@ -583,15 +586,15 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Environment
         |   |-- Items
         |-- Effects
-        |   |-- Audio
         |   |-- Electrical
+        |   |   |-- Sounds
         |   |-- Fire
         |   |-- Weather
         |-- Environment
-        |   |-- Audio
-        |   |   |-- Music
+        |   |-- Music
         |   |-- Industrial
         |   |   |-- Ambient
+        |   |   |   |-- Sounds
         |   |   |-- Machinery
         |   |   |-- Pipes
         |   |-- Nature
@@ -620,11 +623,11 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Utility
         |   |-- Weathering
         |-- UI
-        |   |-- Audio
         |   |-- Fonts
         |   |-- HUD
         |   |-- Materials
         |   |-- Menu
+        |   |-- Sounds
 </pre>
 
 The reasons for this structure are listed in the following sub-sections.
@@ -1021,8 +1024,8 @@ Example: A weapon class set of variables might be organized as:
     |-- Config
     |    |-- Animations
     |    |-- Effects
-    |    |-- Audio
     |    |-- Recoil
+    |    |-- Sounds
     |    |-- Timings
     |-- Animations
     |-- State
