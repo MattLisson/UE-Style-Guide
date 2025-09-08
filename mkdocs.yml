@@ -1,5 +1,7 @@
 site_name: Unreal 5 Style Guide
-theme: readthedocs
+theme: 
+  name: readthedocs
+  collapse_navigation: False
 plugins:
   - search
   - autorefs

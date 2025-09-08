@@ -1,12 +1,12 @@
+# 3. Blueprints
 [](){ #3 }
 [](){ #bp }
-## 3. Blueprints
 
 This section will focus on Blueprint classes and their internals. When possible, style rules conform to [Epic's Coding Standard](https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard).
 
 Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](http://github.com/KorkuVeren))
 
-### Sections
+## Sections
 
 > 3.1 [Compiling][bp-compiling]
 > 3.2 [Variables][bp-vars]
@@ -15,7 +15,7 @@ Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](htt
 
 [](){ #3.1 }
 [](){ #bp-compiling }
-### 3.1 Compiling
+## 3.1 Compiling
 
 All blueprints should compile with zero warnings and zero errors. You should fix blueprint warnings and errors immediately as they can quickly cascade into very scary unexpected behavior.
 
@@ -25,11 +25,11 @@ Broken blueprints can cause problems that manifest in other ways, such as broken
 
 [](){ #3.2 }
 [](){ #bp-vars }
-### 3.2 Variables
+## 3.2 Variables
 
 The words `variable` and `property` may be used interchangeably.
 
-#### Sections
+### Sections
 
 > 3.2.1 [Naming][bp-vars]
 > 3.2.2 [Editable][bp-vars-editable]
@@ -41,22 +41,22 @@ The words `variable` and `property` may be used interchangeably.
 
 [](){ #3.2.1 }
 [](){ #bp-var-naming }
-#### 3.2.1 Naming
+### 3.2.1 Naming
 
 [](){ #3.2.1.1 }
 [](){ #bp-var-naming-nouns }
-##### 3.2.1.1 Nouns
+#### 3.2.1.1 Nouns
 
 All non-boolean variable names must be clear, unambiguous, and descriptive nouns.
 
 [](){ #3.2.1.2 }
 [](){ #bp-var-naming-case }
-##### 3.2.1.2 PascalCase
+#### 3.2.1.2 PascalCase
 
 All non-boolean variables should be in the form of [PascalCase][terms-cases].
 
 [](){ #3.2.1.2e }
-###### 3.2.1.2e Examples:
+##### 3.2.1.2e Examples:
 
 * `Score`
 * `Kills`
@@ -67,7 +67,7 @@ All non-boolean variables should be in the form of [PascalCase][terms-cases].
 
 [](){ #3.2.1.3 }
 [](){ #bp-var-bool-prefix }
-##### 3.2.1.3 Boolean `b` Prefix
+#### 3.2.1.3 Boolean `b` Prefix
 
 All booleans should be named in PascalCase but prefixed with a lowercase `b`.
 
@@ -77,10 +77,10 @@ UE Blueprint editors know not to include the `b` in user-friendly displays of th
 
 [](){ #3.2.1.4 }
 [](){ #bp-var-bool-names }
-##### 3.2.1.4 Boolean Names
+#### 3.2.1.4 Boolean Names
 
 [](){ #3.2.1.4.1 }
-###### 3.2.1.4.1 General And Independent State Information
+##### 3.2.1.4.1 General And Independent State Information
 
 All booleans should be named as descriptive adjectives when possible if representing general information. Do not include words that phrase the variable as a question, such as `Is`. This is reserved for functions.
 
@@ -89,7 +89,7 @@ Example: Use `bDead` and `bHostile` **not** `bIsDead` and `bIsHostile`.
 Try to not use verbs such as `bRunning`. Verbs tend to lead to complex states.
 
 [](){ #3.2.1.4.2 }
-###### 3.2.1.4.2 Complex States
+##### 3.2.1.4.2 Complex States
 
 Do not to use booleans to represent complex and/or dependent states. This makes state adding and removing complex and no longer easily readable. Use an enumeration instead.
 
@@ -99,12 +99,12 @@ Example: Do **not** use `bRunning` if you also need `bWalking` or `bSprinting`. 
 
 [](){ #3.2.1.5 }
 [](){ #bp-vars-naming-context }
-##### 3.2.1.5 Considered Context
+#### 3.2.1.5 Considered Context
 
 All variable names must not be redundant with their context as all variable references in Blueprint will always have context.
 
 [](){ #3.2.1.5e }
-###### 3.2.1.5e Examples:
+##### 3.2.1.5e Examples:
 
 Consider a Blueprint called `PlayerCharacter_BP`.
 
@@ -130,7 +130,7 @@ All of these variables are named redundantly. It is implied that the variable is
 
 [](){ #3.2.1.6 }
 [](){ #bp-vars-naming-atomic }
-##### 3.2.1.6 Do _Not_ Include Atomic Type Names
+#### 3.2.1.6 Do _Not_ Include Atomic Type Names
 
 Atomic or primitive variables are variables that represent data in their simplest form, such as booleans, integers, floats, and enumerations.
 
@@ -150,7 +150,7 @@ Example: A fence generator needs to generate X number of posts. Store X in `NumP
 
 [](){ #3.2.1.7 }
 [](){ #bp-vars-naming-complex }
-##### 3.2.1.7 Do Include Non-Atomic Type Names
+#### 3.2.1.7 Do Include Non-Atomic Type Names
 
 Non-atomic or complex variables are variables that represent data as a collection of atomic variables. Structs, Classes, Interfaces, and primitives with hidden behavior such as `Text` and `Name` all qualify under this rule.
 
@@ -169,7 +169,7 @@ Example: If a `Turret_BP` has the ability to target a `PlayerCharacter_BP`, it s
 
 [](){ #3.2.1.8 }
 [](){ #bp-vars-naming-arrays }
-##### 3.2.1.8 Arrays
+#### 3.2.1.8 Arrays
 
 Arrays follow the same naming rules as above, but should be named as a plural noun.
 
@@ -178,7 +178,7 @@ Example: Use `Targets`, `Hats`, and `EnemyPlayers`, **not** `TargetList`, `HatAr
 
 [](){ #3.2.2 }
 [](){ #bp-vars-editable }
-#### 3.2.2 Editable Variables
+### 3.2.2 Editable Variables
 
 All variables that are safe to change the value of in order to configure behavior of a blueprint should be marked as `Editable`.
 
@@ -188,13 +188,13 @@ Do not arbitrarily mark variables as `Editable`.
 
 [](){ #3.2.2.1 }
 [](){ #bp-vars-editable-tooltips }
-##### 3.2.2.1 Tooltips
+#### 3.2.2.1 Tooltips
 
 All `Editable` variables, including those marked editable just so they can be marked as `Expose On Spawn`, should have a description in their `Tooltip` fields that explains how changing this value affects the behavior of the blueprint.
 
 [](){ #3.2.2.2 }
 [](){ #bp-vars-editable-ranges }
-##### 3.2.2.2 Slider And Value Ranges
+#### 3.2.2.2 Slider And Value Ranges
 
 All `Editable` variables should make use of slider and value ranges if there is ever a value that a variable should _not_ be set to.
 
@@ -206,7 +206,7 @@ A Value Range only needs to be defined if the bounds of a value are known. While
 
 [](){ #3.2.3 }
 [](){ #bp-vars-categories }
-#### 3.2.3 Categories
+### 3.2.3 Categories
 
 If a class has only a small number of variables, categories are not required.
 
@@ -230,7 +230,7 @@ Example: A weapon class set of variables might be organized as:
 
 [](){ #3.2.4 }
 [](){ #bp-vars-access }
-#### 3.2.4 Variable Access Level
+### 3.2.4 Variable Access Level
 
 In C++, variables have a concept of access level. Public means any code outside the class can access the variable. Protected means only the class and any child classes can access this variable internally. Private means only this class and no child classes can access this variable.
 
@@ -240,13 +240,13 @@ Treat `Editable` variables as public variables. Treat non-editable variables as 
 
 [](){ #3.2.4.1 }
 [](){ #bp-vars-access-private }
-##### 3.2.4.1 Private Variables
+#### 3.2.4.1 Private Variables
 
 Unless it is known that a variable should only be accessed within the class it is defined and never a child class, do not mark variables as private. Until variables are able to be marked `protected`, reserve private for when you absolutely know you want to restrict child class usage.
 
 [](){ #3.2.5 }
 [](){ #bp-vars-advanced }
-#### 3.2.5 Advanced Display
+### 3.2.5 Advanced Display
 
 If a variable should be editable but often untouched, mark it as `Advanced Display`. This makes the variable hidden unless the advanced display arrow is clicked.
 
@@ -254,7 +254,7 @@ To find the `Advanced Display` option, it is listed as an advanced displayed var
 
 [](){ #3.2.6 }
 [](){ #bp-vars-transient }
-#### 3.2.6 Transient Variables
+### 3.2.6 Transient Variables
 
 Transient variables are variables that do not need to have their value saved and loaded and have an initial value of zero or null. This is useful for references to other objects and actors who's value isn't known until run-time. This prevents the editor from ever saving a reference to it, and speeds up saving and loading of the blueprint class.
 
@@ -262,19 +262,19 @@ Because of this, all transient variables should always be initialized as zero or
 
 [](){ #3.2.7 }
 [](){ #bp-vars-config }
-#### 3.2.8 Config Variables
+### 3.2.8 Config Variables
 
 Do not use the `Config Variable` flag. This makes it harder for designers to control blueprint behavior. Config variables should only be used in C++ for rarely changed variables. Think of them as `Advanced Advanced Display` variables.
 
 [](){ #3.3 }
 [](){ #bp-functions }
-### 3.3 Functions, Events, and Event Dispatchers
+## 3.3 Functions, Events, and Event Dispatchers
 
 This section describes how you should author functions, events, and event dispatchers. Everything that applies to functions also applies to events, unless otherwise noted.
 
 [](){ #3.3.1 }
 [](){ #bp-funcs-naming }
-#### 3.3.1 Function Naming
+### 3.3.1 Function Naming
 
 The naming of functions, events, and event dispatchers is critically important. Based on the name alone, certain assumptions can be made about functions. For example:
 
@@ -288,7 +288,7 @@ These questions and more can all be answered when functions are named appropriat
 
 [](){ #3.3.1.1 }
 [](){ #bp-funcs-naming-verbs }
-#### 3.3.1.1 All Functions Should Be Verbs
+### 3.3.1.1 All Functions Should Be Verbs
 
 All functions and events perform some form of action, whether its getting info, calculating data, or causing something to explode. Therefore, all functions should all start with verbs. They should be worded in the present tense whenever possible. They should also have some context as to what they are doing.
 
@@ -317,13 +317,13 @@ Bad examples:
 
 [](){ #3.3.1.2 }
 [](){ #bp-funcs-naming-onrep }
-#### 3.3.1.2 Property RepNotify Functions Always `OnRep_Variable`
+### 3.3.1.2 Property RepNotify Functions Always `OnRep_Variable`
 
 All functions for replicated with notification variables should have the form `OnRep_Variable`. This is forced by the Blueprint editor. If you are writing a C++ `OnRep` function however, it should also follow this convention when exposing it to Blueprints.
 
 [](){ #3.3.1.3 }
 [](){ #bp-funcs-naming-bool }
-#### 3.3.1.3 Info Functions Returning Bool Should Ask Questions
+### 3.3.1.3 Info Functions Returning Bool Should Ask Questions
 
 When writing a function that does not change the state of or modify any object and is purely for getting information, state, or computing a yes/no value, it should ask a question. This should also follow [the verb rule][bp-funcs-naming-verbs].
 
@@ -350,7 +350,7 @@ Bad examples:
 
 [](){ #3.3.1.4 }
 [](){ #bp-funcs-naming-eventhandlers }
-#### 3.3.1.4 Event Handlers and Dispatchers Should Start With `On`
+### 3.3.1.4 Event Handlers and Dispatchers Should Start With `On`
 
 Any function that handles an event or dispatches an event should start with `On` and continue to follow [the verb rule][bp-funcs-naming-verbs]. The verb may move to the end however if past-tense reads better.
 
@@ -377,7 +377,7 @@ Bad examples:
 
 [](){ #3.3.1.5 }
 [](){ #bp-funcs-naming-rpcs }
-#### 3.3.1.5 Remote Procedure Calls Should Be Prefixed With Target
+### 3.3.1.5 Remote Procedure Calls Should Be Prefixed With Target
 
 Any time an RPC is created, it should be suffixed with either `Server`, `Client`, or `Multicast`. No exceptions.
 
@@ -399,7 +399,7 @@ Bad examples:
 
 [](){ #3.3.2 }
 [](){ #bp-funcs-return }
-#### 3.3.2 All Functions Must Have Return Nodes
+### 3.3.2 All Functions Must Have Return Nodes
 
 All functions must have return nodes, no exceptions.
 
@@ -411,7 +411,7 @@ In situations like where a programmer may add a pin to a Sequence node or add lo
 
 [](){ #3.3.3 }
 [](){ #bp-graphs-funcs-node-limit }
-#### 3.3.3 No Function Should Have More Than 50 Nodes
+### 3.3.3 No Function Should Have More Than 50 Nodes
 
 Simply, no function should have more than 50 nodes. Any function this big should be broken down into smaller functions for readability and ease of maintenance.
 
@@ -427,7 +427,7 @@ The following nodes are not counted as they are deemed to not increase function 
 
 [](){ #3.3.4 }
 [](){ #bp-graphs-funcs-description }
-#### 3.3.4 All Public Functions Should Have A Description
+### 3.3.4 All Public Functions Should Have A Description
 
 This rule applies more to public facing or marketplace blueprints, so that others can more easily navigate and consume your blueprint API.
 
@@ -435,7 +435,7 @@ Simply, any function that has an access specificer of Public should have its des
 
 [](){ #3.3.5 }
 [](){ #bp-graphs-funcs-plugin-category }
-#### 3.3.5 All Custom Static Plugin `BlueprintCallable` Functions Must Be Categorized By Plugin Name
+### 3.3.5 All Custom Static Plugin `BlueprintCallable` Functions Must Be Categorized By Plugin Name
 
 If your project includes a plugin that defines `static` `BlueprintCallable` functions, they should have their category set to the plugin's name or a subset category of the plugin's name.
 
@@ -443,19 +443,19 @@ For example, `Zed Camera Interface` or `Zed Camera Interface | Image Capturing`.
 
 [](){ #3.4 }
 [](){ #bp-graphs }
-### 3.4 Blueprint Graphs
+## 3.4 Blueprint Graphs
 
 This section covers things that apply to all Blueprint graphs.
 
 [](){ #3.4.1 }
 [](){ #bp-graphs-spaghetti }
-#### 3.4.1 No Spaghetti
+### 3.4.1 No Spaghetti
 
 Wires should have clear beginnings and ends. You should never have to mentally untangle wires to make sense of a graph. Many of the following sections are dedicated to reducing spaghetti.
 
 [](){ #3.4.2 }
 [](){ #bp-graphs-align-wires }
-#### 3.4.2 Align Wires Not Nodes
+### 3.4.2 Align Wires Not Nodes
 
 Always align wires, not nodes. You can't always control the size and pin location on a node, but you can always control the location of a node and thus control the wires. Straight wires provide clear linear flow. Wiggly wires wear wits wickedly. You can straighten wires by using the Straighten Connections command with BP nodes selected. Hotkey: Q
 
@@ -470,19 +470,19 @@ Acceptable Example: Certain nodes might not cooperate no matter how you use the 
 
 [](){ #3.4.3 }
 [](){ #bp-graphs-exec-first-class }
-#### 3.4.3 White Exec Lines Are Top Priority
+### 3.4.3 White Exec Lines Are Top Priority
 
 If you ever have to decide between straightening a linear white exec line or straightening data lines of some kind, always straighten the white exec line.
 
 [](){ #3.4.4 }
 [](){ #bp-graphs-block-comments }
-#### 3.4.4 Graphs Should Be Reasonably Commented
+### 3.4.4 Graphs Should Be Reasonably Commented
 
 Blocks of nodes should be wrapped in comments that describe their higher-level behavior. While every function should be well named so that each individual node is easily readable and understandable, groups of nodes contributing to a purpose should have their purpose described in a comment block. If a function does not have many blocks of nodes and its clear that the nodes are serving a direct purpose in the function's goal, then they do not need to be commented as the function name and  description should suffice.
 
 [](){ #3.4.5 }
 [](){ #bp-graphs-cast-error-handling }
-#### 3.4.5 Graphs Should Handle Casting Errors Where Appropriate
+### 3.4.5 Graphs Should Handle Casting Errors Where Appropriate
 
 If a function or event assumes that a cast always succeeds, it should appropriately report a failure in logic if the cast fails. This lets others know why something that is 'supposed to work' doesn't. A function should also attempt a graceful recover after a failed cast if it's known that the reference being casted could ever fail to be casted.
 
@@ -490,6 +490,6 @@ This does not mean every cast node should have its failure handled. In many case
 
 [](){ #3.4.6 }
 [](){ #bp-graphs-dangling-nodes }
-#### 3.4.6 Graphs Should Not Have Any Dangling / Loose / Dead Nodes
+### 3.4.6 Graphs Should Not Have Any Dangling / Loose / Dead Nodes
 
 All nodes in all blueprint graphs must have a purpose. You should not leave dangling blueprint nodes around that have no purpose or are not executed.

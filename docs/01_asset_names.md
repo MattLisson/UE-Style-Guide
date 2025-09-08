@@ -1,6 +1,6 @@
+# 1. Asset Naming Conventions
 [](){ #anc }
 [](){ #1 }
-## 1. Asset Naming Conventions
 
 Naming conventions should be treated as law. A project that conforms to a naming convention is able to have its assets managed, searched, parsed, and maintained with incredible ease.
 
@@ -8,7 +8,7 @@ Most things are suffixed with suffixes being generally an acronym of the asset t
 
 [](){ #base-asset-name }
 [](){ #1.1 }
-### 1.1 Base Asset Name - `Prefix_BaseAssetName_Variant_Suffix`
+## 1.1 Base Asset Names
 
 All assets should have a _Base Asset Name_. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the standard of  `Prefix_BaseAssetName_Variant_Suffix`.
 
@@ -25,9 +25,9 @@ For unique but generic variations of assets, `Variant` is a two digit number sta
 Depending on how your asset variants are made, you can chain together variant names. For example, if you are creating flooring assets for an Arch Viz project you should use the base name `Flooring` with chained variants such as `Flooring_Marble_01`, `Flooring_Maple_01`, `Flooring_Tile_Squares_01`.
 
 [](){ #1.1-examples }
-#### 1.1 Examples
+### 1.1 Examples
 
-##### 1.1e1 Bob
+#### 1.1e1 Bob
 
 | Asset Type               | Asset Name                                                 |
 | ------------------------ | ---------------------------------------------------------- |
@@ -37,7 +37,7 @@ Depending on how your asset variants are made, you can chain together variant na
 | Texture (Normal)         | T_Bob_N                                                    |
 | Texture (Evil Base Color)| T_Bob_Evil_BC                                              |
 
-##### 1.1e2 Rocks
+#### 1.1e2 Rocks
 
 | Asset Type              | Asset Name                                                 |
 | ----------------------- | ---------------------------------------------------------- |
@@ -49,41 +49,13 @@ Depending on how your asset variants are made, you can chain together variant na
 
 [](){ #asset-name-modifiers }
 [](){ #1.2 }
-### 1.2 Asset Name Modifiers
+## 1.2 Asset Name Modifiers
 
 When naming an asset, use these tables to determine the prefix and suffix to use with an asset's [Base Asset Name][base-asset-name].
 
-#### Sections
-
-> 1.2.1 [Most Common][anc-common]
-
-> 1.2.2 [Animations][anc-animations]
-
-> 1.2.3 [Artificial Intelligence][anc-ai]
-
-> 1.2.4 [Blueprints][anc-bp]
-
-> 1.2.5 [Materials][anc-materials]
-
-> 1.2.6 [Textures][anc-textures]
-
-> 1.2.7 [Miscellaneous][anc-misc]
-
-> 1.2.8 [Paper 2D][anc-paper2d]
-
-> 1.2.9 [Physics][anc-physics]
-
-> 1.2.10 [Sounds][anc-sounds]
-
-> 1.2.11 [User Interface][anc-ui]
-
-> 1.2.12 [Effects][anc-effects]
-
-> 1.2.13 [Input][anc-input]
-
 [](){ #anc-common }
 [](){ #1.2.1 }
-#### 1.2.1 Most Common
+### 1.2.1 Common
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -102,7 +74,7 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 
 [](){ #anc-animations }
 [](){ #1.2.2 }
-#### 1.2.2 Animations
+### 1.2.2 Animations
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -195,7 +167,7 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 
 [](){ #anc-textures-packing }
 [](){ #1.2.6.1 }
-#### 1.2.6.1 Texture Packing
+### 1.2.6.1 Texture Packing
 It is common practice to pack multiple layers of texture data into one texture. An example of this is packing Emissive, Roughness, Ambient Occlusion together as the Red, Green, and Blue channels of a texture respectively. To determine the suffix, simply stack the given suffix letters from above together, e.g. `_ERO`.
 
 > It is generally acceptable to include an Alpha/Opacity layer in your Diffuse/Albedo's alpha channel and as this is common practice, adding `A` to the `_D` suffix is optional.

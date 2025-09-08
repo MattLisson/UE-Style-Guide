@@ -1,4 +1,4 @@
-# [Starforge Games](https://www.starforge-games.com) Unreal Engine Style Guide() {
+# Introduction
 
 *A mostly reasonable approach to Unreal Engine 4 & 5*
 
