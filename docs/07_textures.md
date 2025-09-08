@@ -4,15 +4,6 @@
 
 This section will focus on Texture assets and their internals.
 
-## Sections
-
-> 7.1 [Dimensions Are Powers of 2][textures-dimensions]
-
-> 7.2 [Texture Density Should Be Uniform][textures-dimensions]
-
-> 7.3 [Textures Should Be No Bigger than 8192][textures-max-size]
-
-> 7.4 [Correct Texture Groups][textures-group]
 
 [](){ #7.1 }
 [](){ #textures-dimensions }

@@ -7,15 +7,6 @@
 
 This section will focus on Level assets and their internals.
 
-## Sections
-
-> 6.1 [No Errors Or Warnings][levels-no-errors-or-warnings]
-
-> 6.2 [Lighting Should Be Built][levels-lighting-should-be-built]
-
-> 6.3 [No Player Visible Z Fighting][levels-no-visible-z-fighting]
-
-> 6.4 [Marketplace Specific Rules][levels-mp-rules]
 
 [](){ #6.1 }
 [](){ #levels-no-errors-or-warnings }

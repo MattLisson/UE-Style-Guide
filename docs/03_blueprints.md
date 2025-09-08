@@ -6,13 +6,6 @@ This section will focus on Blueprint classes and their internals. When possible,
 
 Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](http://github.com/KorkuVeren))
 
-## Sections
-
-> 3.1 [Compiling][bp-compiling]
-> 3.2 [Variables][bp-vars]
-> 3.3 [Functions][bp-functions]
-> 3.4 [Graphs][bp-graphs]
-
 [](){ #3.1 }
 [](){ #bp-compiling }
 ## 3.1 Compiling
@@ -29,15 +22,6 @@ Broken blueprints can cause problems that manifest in other ways, such as broken
 
 The words `variable` and `property` may be used interchangeably.
 
-### Sections
-
-> 3.2.1 [Naming][bp-vars]
-> 3.2.2 [Editable][bp-vars-editable]
-> 3.2.3 [Categories][bp-vars-categories]
-> 3.2.4 [Access][bp-vars-access]
-> 3.2.5 [Advanced][bp-vars-advanced]
-> 3.2.6 [Transient][bp-vars-transient]
-> 3.2.7 [Config][bp-vars-config]
 
 [](){ #3.2.1 }
 [](){ #bp-var-naming }
@@ -379,15 +363,15 @@ Bad examples:
 [](){ #bp-funcs-naming-rpcs }
 ### 3.3.1.5 Remote Procedure Calls Should Be Prefixed With Target
 
-Any time an RPC is created, it should be suffixed with either `Server`, `Client`, or `Multicast`. No exceptions.
+Any time an RPC is created, it should be prefixed with either `Server`, `Client`, or `Multicast`. No exceptions.
 
-After the suffix, follow all other rules regarding function naming.
+After the prefix, follow all other rules regarding function naming.
 
 Good examples:
 
-* `FireWeaponServer`
-* `NotifyDeathClient`
-* `SpawnTracerEffectMulticast`
+* `ServerFireWeapon`
+* `ClientNotifyDeath`
+* `MulticastSpawnTracerEffect`
 
 Bad examples:
 

@@ -5,14 +5,6 @@
 
 This section will focus on Static Mesh assets and their internals.
 
-## Sections
-
-> 4.1 [UVs][s-uvs]
-> 4.2 [LODs][s-lods]
-> 4.3 [Modular Socketless Snapping][s-modular-snapping]
-> 4.4 [Must Have Collision][s-collision]
-> 4.5 [Correct Scale][s-scaled]
-
 [](){ #4.1 }
 [](){ #s-uvs }
 ## 4.1 Static Mesh UVs

@@ -6,7 +6,7 @@ Equally important as asset names, the directory structure style of a project sho
 
 There are multiple ways to lay out the content of a UE project. In this style, we will be using a structure that relies more on filtering and search abilities of the Content Browser for those working with assets to find assets of a specific type instead of another common structure that groups asset types with folders.
 
-> If you are using the suffix [naming convention][1.2] above, using folders to contain assets of similar types such as `Meshes`, `Textures`, and `Materials` is a redundant practice as asset types can already both be searched by suffix as well as be filtered in the content browser.
+> If you are using the prefix [naming convention][1.2] above, using folders to contain assets of similar types such as `Meshes`, `Textures`, and `Materials` is a redundant practice as asset types can already both be searched by prefix as well as be filtered in the content browser.
 
 [](){ #2e1 }
 ## 2e1 Example Project Content Structure
@@ -84,19 +84,6 @@ There are multiple ways to lay out the content of a UE project. In this style, w
 </pre>
 
 The reasons for this structure are listed in the following sub-sections.
-
-## Sections
-
-> 2.1 [Folder Names][structure-folder-names]
-> 2.2 [Top-Level Folders][structure-top-level]
-> 2.3 [Developer Folders][structure-developers]
-> 2.4 [Maps][structure-maps]
-> 2.5 [Core][structure-core]
-> 2.6 [`Assets` and `AssetTypes`][structure-assettypes]
-> 2.7 [Large Sets][structure-large-sets]
-> 2.8 [Material Library][structure-material-library]
-> 2.9 [No Empty Folders][structure-no-empty-folders]
-> 2.10 [Content Source Folder][structure-content-source-folder]
 
 [](){ #2.1 }
 [](){ #structure-folder-names }
@@ -228,7 +215,7 @@ All asset names are named with their asset type in mind. These folders offer onl
 
 Want to view only static mesh in `Environment/Rocks/`? Simply turn on the Static Mesh filter. If all assets are named correctly, they will also be sorted in alphabetical order. Want to view both static meshes and skeletal meshes? Simply turn on both filters. This eliminates the need to potentially have to `Control-Click` select two folders in the Content Browser's tree view.
 
-> This also extends the full path name of an asset for very little benefit. The `_SM` suffix for a static mesh is only three characters, whereas `Meshes/` is seven characters.
+> This also extends the full path name of an asset for very little benefit. The `_SM` prefix for a static mesh is only three characters, whereas `Meshes/` is seven characters.
 
 Not doing this also prevents the inevitability of someone putting a static mesh or a texture in a `Materials` folder.
 
